@@ -91,7 +91,7 @@ function ConvertHandler() {
       km: 'kilometers',
       mi: 'miles',
       l: 'liters',
-      gal: 'galons',
+      gal: 'gallons',
       lbs: 'pounds',
       kg: 'kilograms'
     }
@@ -127,7 +127,7 @@ function ConvertHandler() {
         break;
     }
 
-    return result;
+    return Math.round(result * 100000)/100000;
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
