@@ -2,7 +2,6 @@ function ConvertHandler() {
 
   this.getNum = function (input) {
     let result;
-    // let regex = /(\d+(\.\d+)?|\d+(\.\d+)?\/\d+(\.\d+)?)(\w+)/i;
     let regex = /[a-z]/i; //finds the first letter (we can separate the number from the unit having this index)
     //find the index of the number to slice that part
     if (!regex.exec(input)) {
@@ -43,14 +42,13 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     let result;
-    // let regex = /(\d+(\.\d+)?|\d+(\.\d+)?\/\d+(\.\d+)?)(\w+)/i;
     let regex = /[a-z]/i;
     if (!regex.exec(input)) return result = 'invalid unit'
 
     let index = regex.exec(input).index;
-    let unit = input.slice(index, input.length);
-    if(unit === 'kg' | unit === 'lbs' | unit === 'km' | unit === 'mi' | unit.toLowerCase() === 'l' | unit === 'gal'){
-      result = unit;
+    let unit = input.slice(index, input.length).toLowerCase();
+    if(unit === 'kg' | unit === 'lbs' | unit === 'km' | unit === 'mi' | unit === 'l' | unit === 'gal'){
+      unit === "l" ? result = 'L' : result = unit;
     } else{
       result = 'invalid unit'
     }
@@ -95,7 +93,6 @@ function ConvertHandler() {
       lbs: 'pounds',
       kg: 'kilograms'
     }
-    // unitObj[unit.toLowerCase()] ? result = unitObj[unit.toLowerCase()] : result = 'invalid unit';
     return result = unitObj[unit.toLowerCase()];
   };
 
